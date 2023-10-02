@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +10,6 @@
     <link rel="stylesheet" href="./public/css/header.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
-
 <body>
     <header>
         <nav>
@@ -30,20 +28,20 @@
                 <h1>Formulário de cadastro</h1>
                 <div class="inp">
                     <label for="name"><strong>Nome completo:</strong></label>
-                    <input type="text" name="name" id="name">
+                    <input type="text" name="name" id="name" placeholder="Jonas o Barbaro">
                 </div>
                 <div class="inp">
                     <label for=""><strong>Email:</strong></label>
-                    <input type="email" name="email" id="email">
+                    <input type="text" name="email" id="email"  placeholder="Barbaro123@Jonas.com">
                 </div>
                 <div class="inp">
                     <label for=""><strong>Senha:</strong></label>
-                    <input type="password" name="password" id="password">
+                    <input type="password" name="password" id="password" placeholder="***********">
                 </div>
                 <div class="inp">
                     <label for="pais"><strong>Selecione seu pais de origem:</strong></label>
-                    <select name="pais" id="pais">
-                        <option value="" hidden selected></option>
+                    <select name="pais" id="pais" placeholder="10">
+                        <option value="" hidden selected>Mexico</option>
                         <option value="BRA">Brasil</option>
                         <option value="ARG">Argentina</option>
                         <option value="COL">Colombia</option>
@@ -51,7 +49,7 @@
                 </div>
                 <div class="inp">
                     <label for="number"><strong>Numero celular:</strong></label>
-                    <input type="number" name="number" id="number">
+                    <input type="number" name="number" id="number" placeholder="11999999999"> 
                 </div>
                 <button type="submit">ENVIAR</button>
             </form>
@@ -104,6 +102,6 @@
             </article>
         </section>
     </footer>
+    <script src="./public/js/formValidation.js"></script>
 </body>
-
 </html>
