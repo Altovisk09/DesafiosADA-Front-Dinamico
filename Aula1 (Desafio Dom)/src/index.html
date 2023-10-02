@@ -1,27 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Dinamico</title>
     <link rel="icon" href="./public/assets/icon/4838646.png">
-    <link rel="stylesheet" href="./public/css/form.css">
+    <link rel="stylesheet" href="./public/css/main.css">
+    <link rel="stylesheet" href="./public/css/footer.css">
+    <link rel="stylesheet" href="./public/css/header.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
+
 <body>
     <header>
-        <section>
-
-        </section>
+        <nav>
+            <div class="icon">
+                <h2>Formulários</h2>
+            </div>
+                <ul>
+                    <li>Cadastrar</li>
+                    <li>Login</li>
+                </ul>
+        </nav>
     </header>
     <main>
-        <section>
-
+        <section id="form">
+            <h1>Formulário de cadastro:</h1>
+            <hr>
+            <form action="" method="post">
+                <div class="inp">
+                    <label for="Apelido">Apelido:</label>
+                    <input type="text" name="Apelido" id="Apelido">
+                </div>
+                <div class="inp">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class="inp">
+                    <label for="password">Senha:</label>
+                    <div>
+                        <input type="password" name="password" id="password">
+                        <div class="eyes">
+                            <i class="bi bi-eye-slash-fill"></i>
+                            <i class="bi bi-eye-fill"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="inp">
+                    <label for="country">Pais de origem:</label>
+                    <select name="country" id="country">
+                        <option hidden selected></option>
+                        <option value="BRA">Brasil</option>
+                        <option value="COL">Colombia</option>
+                        <option value="ARG">Argentina</option>
+                    </select>
+                </div>
+                <div class="inp">
+                    <div class="inpCheck">
+                        <label for="checkbox">Declaro que li e concordo com os termos de privacidade e uso do
+                            formulário</label>
+                        <input type="checkbox" name="checkbox" id="checkbox-footer">
+                    </div>
+                </div>
+                <button type="submit">Enviar</button>
+            </form>
         </section>
     </main>
-    <footer>
-        <section>
-
+    <footer class="footer">
+        <section class="social">
+            <p>SIGA FORMULÁRIOS <span><i class="bi bi-twitter"></i></span><span><i
+                        class="bi bi-instagram"></i></span><span><i class="bi bi-youtube"></i></span><span><i
+                        class="bi bi-linkedin"></i></span></p>
+        </section>
+        <section class="footerSection">
+            <article id="footer-1">
+                <div class="copy">
+                    <p>&copy; 2000 - 2023 TODOS OS DIREITOS RESERVADOS.</p>
+                    <ul>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de uso</a></li>
+                    </ul>
+                </div>
+            </article>
+            <article id="footer-2">
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Destaque</a></li>
+                    <li><a href="#">Sobre nós</a></li>
+                </ul>
+            </article>
+            <article id="footer-3">
+                <h3>Se inscreva</h3>
+                <p>Inscreva-se para receber atualizações sobre anúncios, lançamentos e oportunidades.</p>
+                <form method="post">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email-footer">
+                    <div class="terms">
+                        <input type="checkbox" name="checkbox" id="checkbox">
+                        <label for="checkbox">Clique para confirmar seu consentimento para
+                            receber atualizações por e-mail nossas. Nota - você
+                            tem o direito de retirar o seu consentimento em
+                            a qualquer momento, contactando-nos em
+                            forms@forms.com ou clicando no
+                            link “cancelar inscrição” nos e-mails que enviarmos para
+                            você. Por favor, revise nossa política de privacidade para
+                            mais informações sobre como processamos seu
+                            dados.
+                        </label>
+                    </div>
+                    <button type="button">ENVIAR</button>
+                </form>
+            </article>
         </section>
     </footer>
 </body>
+
 </html>

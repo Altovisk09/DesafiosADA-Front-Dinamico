@@ -1,0 +1,32 @@
+header{
+    background-color: #0057FF;
+    color: #FFF;
+    padding: 10px 20px 10px;
+    border-radius: 0px 0px 15px 15px ;
+    position: sticky;
+}   
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav ul{
+    display: flex;
+    align-items: center;
+} 
+
+nav ul li {
+    font-size: 20px;
+    padding: 10px 0px 10px;
+}
+
+nav ul li{
+    margin-right: 20px;
+}
+
+.icon h2 {
+    font-size: 32px;
+}
+
