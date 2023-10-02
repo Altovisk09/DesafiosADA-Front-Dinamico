@@ -1,14 +1,4 @@
 
-body {
-    background-color: #000;
-    color: #FFF
-}
-
-.logo-title{
-    font-family: 'Orbitron', sans-serif;
-    color: #0057FF;
-}
-
 #footer-1 {
     display: flex;
     flex-direction: column;
@@ -102,8 +92,7 @@ body {
     font-size: 10px;
  }
 
- input[name="email"]{
-    color: var(--bg-primary);
+ #footer-3 input[name="email"]{
     background-color: transparent;
     color: #FFF;
     border-style: none;

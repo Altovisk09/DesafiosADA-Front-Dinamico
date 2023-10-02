@@ -18,52 +18,42 @@
             <div class="icon">
                 <h2>Formulários</h2>
             </div>
-                <ul>
-                    <li>Cadastrar</li>
-                    <li>Login</li>
-                </ul>
+            <ul>
+                <li>Cadastrar</li>
+                <li>Login</li>
+            </ul>
         </nav>
     </header>
     <main>
-        <section id="form">
-            <h1>Formulário de cadastro:</h1>
-            <hr>
-            <form action="" method="post">
+        <section id="form-section">
+            <form action="" method="POST" id="formulario">
+                <h1>Formulário de cadastro</h1>
                 <div class="inp">
-                    <label for="Apelido">Apelido:</label>
-                    <input type="text" name="Apelido" id="Apelido">
+                    <label for="name"><strong>Nome completo:</strong></label>
+                    <input type="text" name="name" id="name">
                 </div>
                 <div class="inp">
-                    <label for="email">Email:</label>
+                    <label for=""><strong>Email:</strong></label>
                     <input type="email" name="email" id="email">
                 </div>
                 <div class="inp">
-                    <label for="password">Senha:</label>
-                    <div>
-                        <input type="password" name="password" id="password">
-                        <div class="eyes">
-                            <i class="bi bi-eye-slash-fill"></i>
-                            <i class="bi bi-eye-fill"></i>
-                        </div>
-                    </div>
+                    <label for=""><strong>Senha:</strong></label>
+                    <input type="password" name="password" id="password">
                 </div>
                 <div class="inp">
-                    <label for="country">Pais de origem:</label>
-                    <select name="country" id="country">
-                        <option hidden selected></option>
+                    <label for="pais"><strong>Selecione seu pais de origem:</strong></label>
+                    <select name="pais" id="pais">
+                        <option value="" hidden selected></option>
                         <option value="BRA">Brasil</option>
-                        <option value="COL">Colombia</option>
                         <option value="ARG">Argentina</option>
+                        <option value="COL">Colombia</option>
                     </select>
                 </div>
                 <div class="inp">
-                    <div class="inpCheck">
-                        <label for="checkbox">Declaro que li e concordo com os termos de privacidade e uso do
-                            formulário</label>
-                        <input type="checkbox" name="checkbox" id="checkbox-footer">
-                    </div>
+                    <label for="number"><strong>Numero celular:</strong></label>
+                    <input type="number" name="number" id="number">
                 </div>
-                <button type="submit">Enviar</button>
+                <button type="submit">ENVIAR</button>
             </form>
         </section>
     </main>
