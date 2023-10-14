@@ -15,8 +15,16 @@ window.addEventListener('DOMContentLoaded', function(){
         return !!value.trim();
     }
 
-    function validaDate(date = new Date()){
+    function validaDate(value = new Date()){
+        const today = new Date().getDate();
+        const correntMonth = new Date().getMonth();
 
+        const dayValue = value.getUTCDate();
+        const monthValue = value.getUTCMonth();
+
+        const dayValid = dayValue >= today;
+        const monthValid = monthValue >= correntMonth;
+        return dayValid && monthValid;
     }
 
     function validaDelivery(value = ''){
@@ -28,24 +36,24 @@ window.addEventListener('DOMContentLoaded', function(){
     }
 
     function validaEmail(value = ''){
-
+        return /^[\w.+\-]+@gmail\.com$/.test(value);
     }
     
     const validaInputs = (input, value) => {
         if (input === "order" && !validaVazio(value))
         throw new FormError("Pedido inválido", input, value);
 
-      if (input === "data" && !validaDate(new Date(value)))
+      if (input === "date" && ! validaDate(new Date(value)))
         throw new FormError("Data inválida", input, value);
 
-      if (input === "amount" && !validaAmount(value))
-        throw new FormError("Valor inválido", input, value);
+    //   if (input === "amount" && !validaAmount(value))
+    //     throw new FormError("Valor inválido", input, value);
 
-      if (input === "email" && !validaEmail(value))
-        throw new FormError("Email inválido", input, value);
+       if (input === "email" && !validaEmail(value))
+         throw new FormError("Email inválido", input, value);
 
-      if (input === "delivery" && !validaDelivery(value))
-        throw new FormError("Previsão inválida", input, value);
+    //   if (input === "delivery" && !validaDelivery(value))
+    //     throw new FormError("Previsão inválida", input, value);
     };
 
 
