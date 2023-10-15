@@ -1,6 +1,7 @@
 window.addEventListener('DOMContentLoaded', function(){
     const form = document.forms[0];
-    
+    const tbody = document.querySelector("table > tbody");
+
     class FormError extends Error{
         constructor(message, input, value){
             super(message);
@@ -48,7 +49,41 @@ window.addEventListener('DOMContentLoaded', function(){
     function validaEmail(value = ''){
         return /^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(value);
     }
+
+    function feedback(message, classe = "alert-danger"){
+        const divMessage = document.querySelector("#mensagem");
+        divMessage.textContent = message;
+        if (classe != "alert-danger") {
+          divMessage.classList.remove("alert-danger");
+        }
+        divMessage.classList.add(classe);
+        
+    }
+    const defaultOrder = {
+        pedido: "",
+        data: "",
+        valor: 0,
+        email: "",
+        previsao: "",
+    }
     
+    let qtdPedidos = 0;
+
+    function addLinha(order = defaultOrder){        
+        const row = document.createElement("tr");
+        const rowID = document.createElement("th");
+        rowID.setAttribute("scope", "row");
+        rowID.textContent = qtdPedidos + 1;
+        row.appendChild(rowID);
+        Object.keys(order).forEach((key) => {
+          const colun = document.createElement("td");
+          colun.textContent = order[key];
+          row.appendChild(colun);
+        });
+        tbody.appendChild(row);
+        qtdPedidos++;
+      };
+
     const validaInputs = (input, value) => {
         if (input === "order" && !validaVazio(value)){
             throw new FormError("Pedido inválido", input, value);
@@ -73,13 +108,18 @@ window.addEventListener('DOMContentLoaded', function(){
         event.preventDefault();
         const inputs = ['order', 'date', 'amount', 'email', 'delivery']
         try{
+            const order = {};
             inputs.forEach((input) => {
                 const inputValue = form[input].value;
-
-                validaInputs(input, inputValue)
+                validaInputs(input, inputValue);
+                Object.assign(order, {
+                    [input]: form[input].value,
+                  });
             })
+            addLinha(order);
+            feedback("Sucesso", "alert-success")
         }catch(error){
-            alert(error.message);
+            feedback(`Erro: ${error.message}`);
         }
     })
 })
