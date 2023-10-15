@@ -32,6 +32,8 @@ window.addEventListener('DOMContentLoaded', function(){
     }
 
     function validaAmount(value = 0){
+        const valorMin = 10
+        return value >= valorMin;
 
     }
 
@@ -40,14 +42,19 @@ window.addEventListener('DOMContentLoaded', function(){
     }
     
     const validaInputs = (input, value) => {
-        if (input === "order" && !validaVazio(value))
-        throw new FormError("Pedido inválido", input, value);
+        if (input === "order" && !validaVazio(value)){
+            throw new FormError("Pedido inválido", input, value);
+        }
+        
 
-      if (input === "date" && ! validaDate(new Date(value)))
+      if (input === "date" && ! validaDate(new Date(value))){
         throw new FormError("Data inválida", input, value);
+      }
+        
 
-    //   if (input === "amount" && !validaAmount(value))
-    //     throw new FormError("Valor inválido", input, value);
+    if (input === "amount" && !validaAmount(value)){
+       throw new FormError("Valor inválido", input, value);
+    }
 
        if (input === "email" && !validaEmail(value))
          throw new FormError("Email inválido", input, value);
