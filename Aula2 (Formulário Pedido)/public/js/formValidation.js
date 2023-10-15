@@ -28,7 +28,15 @@ window.addEventListener('DOMContentLoaded', function(){
     }
 
     function validaDelivery(value = ''){
-
+        const tempoMin = 30;
+        const [hourValue, minuteValue] = value.split(':');
+        const today = new Date();
+        today.setMinutes(today.getMinutes() + tempoMin);
+        const valueOrder = new Date();
+        valueOrder.setHours(hourValue);
+        valueOrder.setMinutes(minuteValue);
+        console.log(valueOrder, today)
+        return valueOrder >= today
     }
 
     function validaAmount(value = 0){
@@ -38,7 +46,7 @@ window.addEventListener('DOMContentLoaded', function(){
     }
 
     function validaEmail(value = ''){
-        return /^[\w.+\-]+@gmail\.com$/.test(value);
+        return /^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(value);
     }
     
     const validaInputs = (input, value) => {
@@ -46,12 +54,10 @@ window.addEventListener('DOMContentLoaded', function(){
             throw new FormError("Pedido inválido", input, value);
         }
         
-
       if (input === "date" && ! validaDate(new Date(value))){
         throw new FormError("Data inválida", input, value);
       }
         
-
     if (input === "amount" && !validaAmount(value)){
        throw new FormError("Valor inválido", input, value);
     }
@@ -59,14 +65,13 @@ window.addEventListener('DOMContentLoaded', function(){
        if (input === "email" && !validaEmail(value))
          throw new FormError("Email inválido", input, value);
 
-    //   if (input === "delivery" && !validaDelivery(value))
-    //     throw new FormError("Previsão inválida", input, value);
+       if (input === "delivery" && !validaDelivery(value))
+         throw new FormError("Previsão inválida", input, value);
     };
-
 
     form.addEventListener('submit', (event)=>{
         event.preventDefault();
-        const inputs = ['order', 'date', 'amount', 'email', 'delivery-prediction']
+        const inputs = ['order', 'date', 'amount', 'email', 'delivery']
         try{
             inputs.forEach((input) => {
                 const inputValue = form[input].value;
