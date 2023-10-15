@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', function(){
     const form = document.forms[0];
     const tbody = document.querySelector("table > tbody");
-
+    
     class FormError extends Error{
         constructor(message, input, value){
             super(message);
@@ -59,6 +59,67 @@ window.addEventListener('DOMContentLoaded', function(){
         divMessage.classList.add(classe);
         
     }
+    let orderKey;
+
+    const salvarPedidos = (order = []) => {
+        localStorage.setItem(orderKey, JSON.stringify(order));
+      };
+
+      const getPedidosLocal = () =>
+        JSON.parse(localStorage.getItem(orderKey) || "[]");
+
+      const deletarPedido = (id) => {
+        const order = getPedidosLocal();
+        const newOrderList = order.filter((item) => item.id != id);
+        salvarPedidos(newOrderList);
+        const orderRow = document.querySelector(
+          `tr[data-id-pedido="${id}"]`
+        );
+        orderRow?.remove();
+      };
+
+      const criarBotaoDel = (id) => {
+        const btn = document.createElement("button");
+        btn.textContent = "deletar";
+        btn.addEventListener("click", () => deletarPedido(id));
+
+        const td = document.createElement("td");
+        td.appendChild(btn);
+        return td;
+      };
+
+      const gerarId = () => new Date().getTime();
+
+      const criaPedidoTr = (order = defaultOrder) => {
+        const linha = document.createElement("tr");
+        linha.setAttribute("data-id-pedido", order.id);
+        Object.keys(order).forEach((key) => {
+          const colun = document.createElement("td");
+          colun.textContent = order[key];
+          linha.appendChild(colun);
+        });
+        linha.appendChild(criarBotaoDel(order.id));
+        return linha;
+      };
+
+      const inserirPedidoTrNaTable = (orderTr) =>
+        tbody.appendChild(orderTr);
+
+      const inserirPedidoLocalStorage = (order = defaultOrder) => {
+        const orderLocalStorage = getPedidosLocal();
+        salvarPedidos([...orderLocalStorage, order]);
+      };
+
+      const criarPedidoTableELocalStorage = (order = defaultOrder) => {
+        const orderTr = criaPedidoTr(order);
+        inserirPedidoTrNaTable(orderTr);
+        inserirPedidoLocalStorage(order);
+      };
+
+      const criarPedidoTable = (order = defaultOrder) => {
+        const orderTr = criaPedidoTr(order);
+        inserirPedidoTrNaTable(orderTr);
+      };
     const defaultOrder = {
         pedido: "",
         data: "",
@@ -116,7 +177,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     [input]: form[input].value,
                   });
             })
-            addLinha(order);
+            const id = gerarId();
+            criarPedidoTableELocalStorage({ id, ...order });
             feedback("Sucesso", "alert-success")
         }catch(error){
             feedback(`Erro: ${error.message}`);
